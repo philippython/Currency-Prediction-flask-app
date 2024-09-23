@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exchange Rate Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='model.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Predict Dollar to Naira Exchange Rate</h1>
+        <form action="/predict" method="POST">
+            <label for="crude_oil_price">Crude Oil Price in USD:</label>
+            <input type="text" id="crude_oil_price" name="crude_oil_price" placeholder="e.g., 60.5" required><br>
+
+            <label for="inflation_rate_us">Inflation Rate US (%):</label>
+            <input type="text" id="inflation_rate_us" name="inflation_rate_us" placeholder="e.g., 3.5" required><br>
+
+            <label for="inflation_rate_ng">Inflation Rate NG (%):</label>
+            <input type="text" id="inflation_rate_ng" name="inflation_rate_ng" placeholder="e.g., 18.5" required><br>
+
+            <input type="submit" value="Predict">
+        </form>
+    </div>
+</body>
+</html>

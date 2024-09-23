@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='model.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Predicted Exchange Rate</h1>
+        <p>The predicted central rate (Dollar to Naira Exchange Rate) is: <strong>{{ prediction }}</strong> NGN/USD</p>
+        <a href="/">Predict another rate</a>
+    </div>
+</body>
+</html>

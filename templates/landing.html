@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exchange Rate Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="landing-container">
+        <h1>Welcome to Exchange Rate Predictor</h1>
+        <p>
+            Our app leverages machine learning to help predict the future exchange rate between the 
+            US Dollar and the Nigerian Naira based on key economic factors such as crude oil prices and inflation rates.
+        </p>
+        <p>
+            This tool is perfect for economists, financial analysts, or anyone interested in gaining insight into currency trends 
+            based on current economic data.
+        </p>
+        <p>
+            Get started by inputting key financial metrics, and our advanced SVM model will provide an estimated prediction.
+        </p>
+        <button onclick="window.location.href='/model'">Get Started</button>
+    </div>
+
+</body>
+</html>
