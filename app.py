@@ -5,14 +5,16 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.impute import SimpleImputer
 from sklearn.svm import SVR
-from sklearn.metrics import mean_squared_error, mean_absolute_error
 import os
 
 app = Flask(__name__)
 
-# Load dataset
-direct_path = os.path.dirname(__file__)
-data = pd.read_csv('Web-UI/data/merged_file.csv')
+# Get the directory of the current script
+direct_path = os.path.dirname(os.path.abspath(__file__))
+
+# Specify the relative path to the CSV file
+csv_file_path = os.path.join(direct_path, 'data', 'merged_file.csv')
+data = pd.read_csv(csv_file_path)
 
 # Selecting relevant features and target variable
 X = data[['Crude Oil Price in USD', 'Inflation Rate US', 'Inflation Rate NG']]
