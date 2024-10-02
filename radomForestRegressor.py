@@ -13,7 +13,7 @@ import os
 direct_path =  os.path.dirname(__file__) #getcwd()
 
 # Load dataset
-data = pd.read_csv(direct_path + '\\merged_file.csv')
+data = pd.read_csv(os.path.join(direct_path, 'data', 'merged_file.csv'))
 
 
 # Selecting relevant features and target variable
