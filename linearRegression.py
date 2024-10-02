@@ -110,39 +110,3 @@ plt.ylabel('Residuals')
 plt.show()
 #--------------------------------------------------------------#
 
-
-
-#---------------------------------------------------------------#
-# User Input for Prediction
-#---------------------------------------------------------------#
-
-print("\nEnter the following values to predict the exchange rate:")
-
-# Input crude oil price
-crude_oil_price = float(input("Crude Oil Price in USD(per barrel): "))
-
-# Input inflation rate in the US
-
-# Input inflation rate in Nigeria
-inflation_rate_ng = float(input("Inflation Rate in Nigeria (%): "))
-
-# Input previous central rate
-# previous_central_rate = float(input("Previous Central Rate (NGN/USD): "))
-
-# Create a DataFrame for the user input
-user_input = pd.DataFrame({
-    'Crude Oil Price in USD': [crude_oil_price],
-    'Inflation Rate NG': [inflation_rate_ng]
-})
-
-# Impute any missing values in the user input (if necessary)
-user_input_imputed = imputer.transform(user_input)
-
-# Standardize the user input using the same scaler used for training
-user_input_scaled = scaler.transform(user_input_imputed)
-
-# Predict the exchange rate using the trained Linear Regression model
-predicted_rate = lr_model.predict(user_input_scaled)
-
-# Display the predicted exchange rate
-print(f"\nPredicted Central Rate (Exchange Rate): {predicted_rate[0]:.2f} NGN/USD")

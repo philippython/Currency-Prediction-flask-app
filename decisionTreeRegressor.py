@@ -52,18 +52,3 @@ for i, feature in enumerate(features):
     plt.xlabel(feature)
     plt.ylabel('Central Rate')
 
-# Input crude oil price
-crude_oil_price = float(input("Crude Oil Price in USD (per barell): "))
-inflation_rate_us = float(input("Inflation Rate in US (%): "))
-inflation_rate_ng = float(input("Inflation Rate in Nigeria (%): "))
-
-# Create a DataFrame for the user input
-user_input = pd.DataFrame({
-    'Crude Oil Price in USD': [crude_oil_price],
-    'Inflation Rate US': [inflation_rate_us],
-    'Inflation Rate NG': [inflation_rate_ng]
-})
-
-# Standardize the user input using the same scaler used for training
-user_input_scaled = scaler.transform(user_input)
-

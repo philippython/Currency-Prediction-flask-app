@@ -78,26 +78,3 @@ plt.xlabel('Predicted Values')
 plt.ylabel('Residuals')
 plt.show()
 
-
-#-----------------------------------------------------------------#
-# User Input for New Prediction
-#-----------------------------------------------------------------#
-
-# Prompt user to input crude oil price, inflation rates for US and Nigeria
-print("\n--- Predict Exchange Rate for New Data ---")
-crude_oil_price = float(input("Enter Crude Oil Price in USD(per Barrel): "))
-inflation_us = float(input("Enter Inflation Rate in the US (%): "))
-inflation_ng = float(input("Enter Inflation Rate in Nigeria (%): "))
-
-# Create a dataframe for the input data
-user_input = pd.DataFrame([[crude_oil_price, inflation_us, inflation_ng]], 
-                          columns=['Crude Oil Price in USD', 'Inflation Rate US', 'Inflation Rate NG'])
-
-# Scale the user input with the same scaler used for training
-user_input_scaled = scaler.transform(user_input)
-
-# Make prediction with the trained model
-predicted_rate = rf_model.predict(user_input_scaled)
-
-# Output the predicted exchange rate
-print(f"\nPredicted Exchange Rate (USD to NGN): {predicted_rate[0]}")
