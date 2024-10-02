@@ -5,6 +5,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.impute import SimpleImputer
 from sklearn.svm import SVR
+from decisionTreeRegressor import dt_model
+from linearRegression import lr_model
+from radomForestRegressor import rf_model
 import os
 
 app = Flask(__name__)
@@ -50,6 +53,7 @@ def predict():
     crude_oil_price = float(request.form['crude_oil_price'])
     inflation_rate_us = float(request.form['inflation_rate_us'])
     inflation_rate_ng = float(request.form['inflation_rate_ng'])
+    model_choice = request.form['model_choice']  # Get the model choice from the clicked button
 
     # Create DataFrame for the user input
     user_input = pd.DataFrame({
@@ -61,9 +65,18 @@ def predict():
     # Standardize the user input using the same scaler
     user_input_scaled = scaler.transform(user_input.values)
 
-    # Predict the exchange rate using the trained SVM model
-    predicted_rate = svm_model.predict(user_input_scaled)
-
+    # Choose model based on model_choice
+    if model_choice == 'svm':
+        predicted_rate = svm_model.predict(user_input_scaled)
+    elif model_choice == 'random_forest':
+        predicted_rate = rf_model.predict(user_input_scaled)
+    elif model_choice == 'decision_tree':
+        predicted_rate = dt_model.predict(user_input_scaled)
+    elif model_choice == 'linear_regression':
+        predicted_rate = lr_model.predict(user_input_scaled)
+    else:
+        return "Error: Invalid model choice", 400
+    
     # Display the predicted exchange rate
     return render_template('result.html', prediction=round(predicted_rate[0]))
 
